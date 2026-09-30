@@ -18,6 +18,9 @@ def validate_bug_report(report: BugReport) -> list[str]:
     if not report.title or len(report.title.strip()) < 5:
         problems.append("Title is missing or too short (min 5 chars).")
 
+    if report.title.strip().endswith("."):
+        problems.append("Title should not end with a period.")
+
     if not report.steps or len(report.steps) < 2:
         problems.append("Provide at least two reproduction steps.")
 

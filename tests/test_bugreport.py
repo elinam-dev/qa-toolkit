@@ -76,3 +76,9 @@ def test_multiple_problems():
     r = BugReport(title="x", steps=[], expected="", actual="", severity="bad")
     problems = validate_bug_report(r)
     assert len(problems) >= 4
+
+
+def test_title_ends_with_period():
+    r = make_valid()
+    r.title = "Login fails on mobile."
+    assert any("period" in p for p in validate_bug_report(r))
