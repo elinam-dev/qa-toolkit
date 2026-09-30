@@ -1,6 +1,6 @@
 # qa-toolkit
 
-A small Python library for validating bug reports and checking requirements.
+Python utilities for validating bug reports and checking named requirements rules.
 
 ## Workflows
 
