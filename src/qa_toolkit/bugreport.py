@@ -33,7 +33,7 @@ def validate_bug_report(report: BugReport) -> list[str]:
     if report.expected and report.actual and report.expected == report.actual:
         problems.append("Expected and actual results must differ.")
 
-    if report.severity.lower() not in VALID_SEVERITIES:
+    if report.severity.strip().lower() not in VALID_SEVERITIES:
         problems.append(f"Severity must be one of {sorted(VALID_SEVERITIES)}.")
 
     return problems
