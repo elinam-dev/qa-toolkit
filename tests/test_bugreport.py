@@ -82,3 +82,9 @@ def test_title_ends_with_period():
     r = make_valid()
     r.title = "Login fails on mobile."
     assert any("period" in p for p in validate_bug_report(r))
+
+
+def test_severity_with_whitespace():
+    r = make_valid()
+    r.severity = "  high  "
+    assert validate_bug_report(r) == []
