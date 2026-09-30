@@ -1,4 +1,4 @@
-from qa_toolkit.requirements import check_requirements
+from qa_toolkit.requirements import check_requirements, max_length_rule
 
 
 def test_all_pass():
@@ -25,3 +25,13 @@ def test_numeric_value():
 def test_failing_value():
     rules = {"positive": lambda v: v > 0}
     assert check_requirements(-1, rules) == {"positive": False}
+
+
+def test_max_length_rule_pass():
+    rules = {"short_enough": max_length_rule(10)}
+    assert check_requirements("hello", rules) == {"short_enough": True}
+
+
+def test_max_length_rule_fail():
+    rules = {"short_enough": max_length_rule(3)}
+    assert check_requirements("toolong", rules) == {"short_enough": False}
